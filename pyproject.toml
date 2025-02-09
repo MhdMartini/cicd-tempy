@@ -11,8 +11,8 @@ readme = "README.md"
 license = {text = "MIT"}
 
 [build-system]
-requires = ["pdm-backend"]
-build-backend = "pdm.backend"
+requires = ["setuptools", "wheel", "cibuildwheel"]
+build-backend = "setuptools.build_meta"
 
 [dependency-groups]
 docs = [
@@ -109,3 +109,7 @@ source = [
     '/Users/runner/work/tempy/src/tempy/',
     'D:\a\tempy\src\tempy',
 ]
+
+[tool.cibuildwheel]
+test-requires = "pytest"
+test-command = "pytest {project}/tests"
