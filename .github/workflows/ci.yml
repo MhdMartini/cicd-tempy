@@ -1,4 +1,4 @@
-name: CI
+name: ci
 
 on:
   push:
@@ -6,6 +6,10 @@ on:
     tags: ['**']
   pull_request:
     branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
 
 env:
   COLUMNS: 120

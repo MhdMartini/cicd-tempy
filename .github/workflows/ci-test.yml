@@ -1,4 +1,6 @@
 name: ci-test
+description: Run unit tests.
+
 
 on:
   workflow_call:
