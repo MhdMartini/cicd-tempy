@@ -68,7 +68,6 @@ strict = []
 
 [tool.codespell]
 skip = '.git,env*,pdm.lock'
-ignore-words-list = ''
 [tool.pdm]
 distribution = true
 
