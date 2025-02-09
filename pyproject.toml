@@ -3,7 +3,7 @@ name = "tempy"
 version = "0.1.0"
 description = "Templates for Python projects"
 authors = [
-    {name = "mo", email = "mhdmart1@gmail.com"},
+    {name = "mo", email = ""},
 ]
 dependencies = []
 requires-python = ">=3.11"
@@ -11,8 +11,8 @@ readme = "README.md"
 license = {text = "MIT"}
 
 [build-system]
-requires = ["setuptools", "wheel", "cibuildwheel"]
-build-backend = "setuptools.build_meta"
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
 
 [dependency-groups]
 docs = [
