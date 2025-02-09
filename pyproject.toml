@@ -79,5 +79,33 @@ strict = []
 
 [tool.codespell]
 skip = '.git,env*,pdm.lock'
+
 [tool.pdm]
 distribution = true
+
+[tool.coverage.run]
+source = ['src']
+branch = true
+relative_files = true
+context = '${CONTEXT}'
+
+[tool.coverage.report]
+precision = 2
+exclude_lines = [
+    'pragma: no cover',
+    'raise NotImplementedError',
+    'if TYPE_CHECKING:',
+    'if typing.TYPE_CHECKING:',
+    '@overload',
+    '@typing.overload',
+    '\(Protocol\):$',
+    'typing.assert_never',
+    'assert_never',
+]
+
+[tool.coverage.paths]
+source = [
+    'src/tempy/',
+    '/Users/runner/work/tempy/src/tempy/',
+    'D:\a\tempy\src\tempy',
+]
