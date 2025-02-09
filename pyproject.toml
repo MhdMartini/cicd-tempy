@@ -24,6 +24,9 @@ lint = [
     "ruff",
     "pyright",
 ]
+dev = [
+    "pre-commit>=4.1.0",
+]
 
 [tool.ruff]
 line-length = 115
@@ -70,4 +73,3 @@ strict = []
 skip = '.git,env*,pdm.lock'
 [tool.pdm]
 distribution = true
-
