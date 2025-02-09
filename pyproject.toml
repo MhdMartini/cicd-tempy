@@ -19,20 +19,21 @@ docs = [
     "mkdocs",
     "mike",
     "mkdocstrings[python]",
-    "mkdocs-material>=9.6.3",
+    "mkdocs-material",
 ]
 lint = [
     "ruff",
     "pyright",
 ]
 dev = [
-    "pre-commit>=4.1.0",
+    "pre-commit",
+    "commitizen",
 ]
 test = [
     "pytest>=8.3.4",
-    "pytest-pretty>=1.2.0",
+    "pytest-pretty",
     "pytest-mock>=3.14.0",
-    "coverage[toml]>=7.6.11",
+    "coverage[toml]",
 ]
 
 [tool.ruff]
@@ -110,6 +111,9 @@ source = [
     'D:\a\tempy\src\tempy',
 ]
 
-[tool.cibuildwheel]
-test-requires = "pytest"
-test-command = "pytest {project}/tests"
+[tool.commitizen]
+version_provider = "pep621"
+version = "0.1.0"
+version_files = ["src/tempy/__init__.py:__version__"]
+update_changelog_on_bump = true
+allowed_prefixes = [ "Merge", "Revert", "Pull request", "fixup!", "squash!"]
