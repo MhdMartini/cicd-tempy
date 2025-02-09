@@ -146,6 +146,8 @@ jobs:
 
       - run: pip install coverage[toml]
 
+      - run: ls -la coverage
+      - run: coverage combine coverage
       - run: coverage report
       - run: coverage html --show-contexts --title "tempy coverage for ${{ github.sha }}"
 
