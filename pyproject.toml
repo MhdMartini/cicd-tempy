@@ -3,7 +3,7 @@ name = "tempy"
 version = "0.1.0"
 description = "Templates for Python projects"
 authors = [
-    {name = "mo", email = ""},
+    {name = "mo", email = "mhdmart1@gmail.com"},
 ]
 dependencies = []
 requires-python = ">=3.11"
