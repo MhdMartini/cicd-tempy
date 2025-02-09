@@ -1,0 +1,119 @@
+[project]
+name = "tempy"
+version = "0.1.0"
+description = "Templates for Python projects"
+authors = [
+    {name = "mo", email = ""},
+]
+dependencies = []
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[dependency-groups]
+docs = [
+    "mkdocs",
+    "mike",
+    "mkdocstrings[python]",
+    "mkdocs-material",
+]
+lint = [
+    "ruff",
+    "pyright",
+]
+dev = [
+    "pre-commit",
+    "commitizen",
+]
+test = [
+    "pytest>=8.3.4",
+    "pytest-pretty",
+    "pytest-mock>=3.14.0",
+    "coverage[toml]",
+]
+
+[tool.ruff]
+line-length = 115
+extend-exclude = []
+
+[tool.ruff.lint]  # From https://github.com/pydantic/pydantic/blob/main/pyproject.toml
+select = [
+    'F',      # Pyflakes
+    'E',      # pycodestyle (Error)
+    'I',      # isort
+    'D',      # pydocstyle
+    'UP',     # pyupgrade
+    'YTT',    # flake8-2020
+    'B',      # flake8-bugbear
+    'T10',    # flake8-debugger
+    'T20',    # flake8-print
+    'C4',     # flake8-comprehensions
+    'PYI006', # flake8-pyi
+    'PYI062', # flake8-pyi
+    'PYI063', # flake8-pyi
+    'PYI066', # flake8-pyi
+]
+ignore = ['D105', 'D107', 'D205', 'D415', 'E501', 'B011', 'B028', 'B904']
+flake8-quotes = {inline-quotes = 'single', multiline-quotes = 'double'}
+isort = { known-first-party = ['tempy', 'tests'] }
+mccabe = { max-complexity = 14 }
+pydocstyle = { convention = 'google' }
+
+[tool.ruff.lint.per-file-ignores]
+'tests/*' = ['D']
+'src/tempy/main.py' = ['D100']
+
+[tool.ruff.lint.extend-per-file-ignores]
+
+[tool.ruff.format]
+quote-style = 'single'
+
+[tool.pyright]
+include = ['src', 'tests']
+exclude = []
+strict = []
+# enableExperimentalFeatures = true
+
+[tool.codespell]
+skip = '.git,env*,pdm.lock'
+
+[tool.pdm]
+distribution = true
+
+[tool.coverage.run]
+source = ['src']
+branch = true
+relative_files = true
+context = '${CONTEXT}'
+
+[tool.coverage.report]
+precision = 2
+exclude_lines = [
+    'pragma: no cover',
+    'raise NotImplementedError',
+    'if TYPE_CHECKING:',
+    'if typing.TYPE_CHECKING:',
+    '@overload',
+    '@typing.overload',
+    '\(Protocol\):$',
+    'typing.assert_never',
+    'assert_never',
+]
+
+[tool.coverage.paths]
+source = [
+    'src/tempy/',
+    '/Users/runner/work/tempy/src/tempy/',
+    'D:\a\tempy\src\tempy',
+]
+
+[tool.commitizen]
+version_provider = "pep621"
+version = "0.1.0"
+version_files = ["src/tempy/__init__.py:__version__"]
+update_changelog_on_bump = true
+allowed_prefixes = [ "Merge", "Revert", "Pull request", "fixup!", "squash!"]

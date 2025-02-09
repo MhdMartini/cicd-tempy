@@ -1,0 +1,21 @@
+name: ci-build
+description: Builds project wheels and sdist.
+
+on:
+  workflow_call:
+
+jobs:
+  buid-sdist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pdm-project/setup-pdm@v4.2
+        with:
+          python-version: '3.11'
+      - name: build wheels
+        run: pdm build
+      - name: Upload built wheels and src code as artifacts
+        uses: actions/upload-artifact@v4.6.0
+        with:
+          name: _artifacts
+          path: dist/*

@@ -1,0 +1,20 @@
+name: ci-docs
+description: Builds project documentation with mkdocs.
+
+on:
+  workflow_call:
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    # - uses: pdm-project/setup-pdm@v4.2
+    #   with:
+    #     python-version: '3.11'
+
+    # - name: Install dependencies
+    #   run: pdm sync -dG docs
+
+    # - run: pdm run mkdocs build
