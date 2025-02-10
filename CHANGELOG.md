@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.0.3 (2025-02-10)
+
+### Bug Fixes
+
+- **ci**: Fix release
+  ([`8bafc54`](https://github.com/MhdMartini/tempy/commit/8bafc54de4f16888bbdb024f5cc385e1a44c59e0))
+
+
 ## v0.0.2 (2025-02-10)
 
 ### Bug Fixes
