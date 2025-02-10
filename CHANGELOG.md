@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.0.2 (2025-02-10)
+
+### Bug Fixes
+
+- **ci**: Fix release
+  ([`14032fc`](https://github.com/MhdMartini/tempy/commit/14032fcadbddb3819e08e352a6e1c4b31de6b41c))
+
+
 ## v0.0.1 (2025-02-10)
 
 ### Bug Fixes
