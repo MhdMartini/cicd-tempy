@@ -1,6 +1,6 @@
 [project]
 name = "tempy"
-version = "0.1.0"
+version = "0.0.1"
 description = "Templates for Python projects"
 authors = [
     {name = "mo", email = ""},
@@ -113,6 +113,7 @@ source = [
 
 [tool.semantic_release]
 version_variable = ["tempy/__init__.py:__version__"]
+version_toml = ["pyproject.toml:project.version"]
 version_source = "tag"
 commit_version_number = true
 commit_message = "chore(release): bump version to {version}"

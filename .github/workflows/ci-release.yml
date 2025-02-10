@@ -24,12 +24,6 @@ jobs:
       - name: Setup | Force correct release branch on workflow sha
         run: |
           git checkout -B ${{ github.ref_name }} ${{ github.sha }}
-      # - id: cz
-      #   name: Create bump and changelog
-      #   uses: commitizen-tools/commitizen-action@master
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     dry_run: true
       - id: release
         name: Create bump and changelog
         uses: python-semantic-release/python-semantic-release@v9.18.1
