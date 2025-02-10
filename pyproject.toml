@@ -111,9 +111,10 @@ source = [
     'D:\a\tempy\src\tempy',
 ]
 
-[tool.commitizen]
-version_provider = "pep621"
-version = "0.1.0"
-version_files = ["src/tempy/__init__.py:__version__"]
-update_changelog_on_bump = true
-allowed_prefixes = [ "Merge", "Revert", "Pull request", "fixup!", "squash!"]
+[tool.semantic_release]
+version_variable = ["tempy/__init__.py:__version__"]
+version_source = "tag"
+commit_version_number = true
+commit_message = "chore(release): bump version to {version}"
+tag_format = "{version}"
+branch = "main"

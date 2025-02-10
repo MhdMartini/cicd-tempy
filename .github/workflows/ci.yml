@@ -54,7 +54,7 @@ jobs:
 
   release:
     needs: [check]
-    if: needs.check.outputs.result == 'success' && startsWith(github.ref, 'refs/tags/')
+    if: needs.check.outputs.result == 'success'
     uses: ./.github/workflows/ci-release.yml
     secrets: inherit
     with:
