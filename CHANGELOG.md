@@ -1,9 +1,20 @@
 # CHANGELOG
 
 
+## v0.1.3 (2025-02-11)
+
+### Bug Fixes
+
+- Ci
+  ([`8243695`](https://github.com/MhdMartini/tempy/commit/8243695d833f8d2826632fd74d6d339053f54839))
+
+
 ## v0.1.2 (2025-02-11)
 
 ### Bug Fixes
+
+- Test
+  ([`ae0703b`](https://github.com/MhdMartini/tempy/commit/ae0703b4ed8d221a544565bc68d9985083472d22))
 
 - Test
   ([`9429c8e`](https://github.com/MhdMartini/tempy/commit/9429c8eb30ef2f1eb254a07372ec8ee46bdf4365))
