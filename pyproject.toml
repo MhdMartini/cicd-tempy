@@ -84,6 +84,9 @@ skip = '.git,env*,pdm.lock'
 [tool.pdm]
 distribution = true
 
+[tool.pdm.scripts]
+post_install = "pdm run pre-commit install"
+
 [tool.coverage.run]
 source = ['src']
 branch = true
@@ -119,3 +122,18 @@ commit_version_number = true
 commit_message = "chore(release): bump version to {version}"
 tag_format = "{version}"
 branch = "main"
+# build_command = "pdm build"
+
+[tool.semantic_release.branches.main]
+match = "(main|master)"
+prerelease_token = "rc"
+prerelease = false
+
+[tool.semantic_release.publish]
+dist_glob_patterns = "dist/*"
+
+[tool.semantic_release.commit_parser_options]
+minor_tags = ['feat']
+patch_tags = ['fix', 'perf']
+other_allowed_tags = ['build', 'chore', 'ci', 'docs', 'style', 'refactor', 'test']
+default_bump_level = 'patch'

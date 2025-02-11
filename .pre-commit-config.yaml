@@ -3,7 +3,7 @@ repos:
   # A few useful pre-commit hooks
   rev: v5.0.0
   hooks:
-  - id: no-commit-to-branch
+  # - id: no-commit-to-branch
   - id: check-yaml
     args: [ '--unsafe' ]
   - id: check-toml
