@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.1.1 (2025-02-11)
+
+### Bug Fixes
+
+- Test
+  ([`22efe9d`](https://github.com/MhdMartini/tempy/commit/22efe9da2c299d0a4cd6dd516fa1f3b1808454e2))
+
+
 ## v0.1.0 (2025-02-11)
 
 ### Bug Fixes
