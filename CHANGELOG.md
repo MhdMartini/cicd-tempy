@@ -1,6 +1,28 @@
 # CHANGELOG
 
 
+## v0.1.0 (2025-02-11)
+
+### Bug Fixes
+
+- Fix ci
+  ([`6b1cf5d`](https://github.com/MhdMartini/tempy/commit/6b1cf5d4338d7d25a7611103428aa637d23acf4e))
+
+- **pyproject.toml**: Dist_glob_patterns as tuple
+  ([`5d49771`](https://github.com/MhdMartini/tempy/commit/5d4977165e8e6317fd7ee0f698855d0b3dcf127a))
+
+### Features
+
+- Another feat
+  ([`804dd54`](https://github.com/MhdMartini/tempy/commit/804dd54d9a3f27ae36749a6ff9f0b610b916d80c))
+
+- Fix ci
+  ([`5c84020`](https://github.com/MhdMartini/tempy/commit/5c84020f6398fff0eaa29f350af48a546c94f519))
+
+- Pre-commit post install
+  ([`031dc2a`](https://github.com/MhdMartini/tempy/commit/031dc2a2a0debf54de0bc9dada5df6da2d63e991))
+
+
 ## v0.0.3 (2025-02-10)
 
 ### Bug Fixes

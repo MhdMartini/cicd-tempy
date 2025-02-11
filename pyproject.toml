@@ -1,6 +1,6 @@
 [project]
 name = "tempy"
-version = "0.0.3"
+version = "0.1.0"
 description = "Templates for Python projects"
 authors = [
     {name = "mo", email = ""},
