@@ -134,4 +134,3 @@ dist_glob_patterns = ["dist/*"]
 minor_tags = ['feat']
 patch_tags = ['fix', 'perf']
 other_allowed_tags = ['build', 'chore', 'ci', 'docs', 'style', 'refactor', 'test']
-default_bump_level = 'patch'

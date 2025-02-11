@@ -29,16 +29,12 @@ jobs:
         uses: python-semantic-release/python-semantic-release@v9.18.1
         if: inputs.dry-run
         with:
-          root_options: "-vv ${{ inputs.dry-run && '--noop' || '' }}"
+          root_options: "-vv --noop"
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          git_committer_email: "actions@users.noreply.github.com"
-          force: patch
 
       - id: release
         name: Create bump and changelog
         uses: python-semantic-release/python-semantic-release@v9.18.1
         with:
-          root_options: "-vv ${{ inputs.dry-run && '--noop' || '' }}"
+          root_options: "-vv"
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          git_committer_email: "actions@users.noreply.github.com"
-          force: patch
