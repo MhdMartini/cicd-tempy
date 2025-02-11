@@ -27,7 +27,6 @@ lint = [
 ]
 dev = [
     "pre-commit",
-    "commitizen",
 ]
 test = [
     "pytest>=8.3.4",

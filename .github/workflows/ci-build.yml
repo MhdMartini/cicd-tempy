@@ -13,7 +13,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: build wheels
-        run: pdm build
+        run: pdm build --skip=:all
       - name: Upload built wheels and src code as artifacts
         uses: actions/upload-artifact@v4.6.0
         with:

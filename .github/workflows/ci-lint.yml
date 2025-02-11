@@ -21,7 +21,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pdm sync -dG lint --no-self
+          pdm sync -dG lint --no-self --skip=:all
 
       - uses: pre-commit/action@v3.0.1
         with:

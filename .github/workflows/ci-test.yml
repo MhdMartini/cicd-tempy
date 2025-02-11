@@ -28,7 +28,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     - name: Install dependencies
-      run: pdm sync -dG test
+      run: pdm sync -dG test --skip=:all
 
     - run: 'pdm run python -c "import tempy; print(tempy.__version__)"'
 
