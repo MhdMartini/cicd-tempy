@@ -32,7 +32,9 @@ jobs:
 
   release-dry-run:
     uses: ./.github/workflows/ci-release.yml
-    secrets: inherit
+    # secrets: inherit
+    with:
+      dry-run: true
 
   check:  # This job does nothing and is only used for the branch protection
     if: always()
@@ -57,5 +59,3 @@ jobs:
     if: needs.check.outputs.result == 'success'
     uses: ./.github/workflows/ci-release.yml
     secrets: inherit
-    with:
-      dry-run: false

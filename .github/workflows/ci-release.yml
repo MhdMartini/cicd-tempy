@@ -8,7 +8,7 @@ on:
         description: "Dry tun only."
         required: false
         type: boolean
-        default: true
+        default: false
 
 jobs:
   release:
@@ -25,16 +25,24 @@ jobs:
         run: |
           git checkout -B ${{ github.ref_name }} ${{ github.sha }}
 
+      # - name: Release dry-run
+      #   uses: python-semantic-release/python-semantic-release@v9.18.1
+      #   if: inputs.dry-run
+      #   with:
+      #     root_options: "-vv --noop"
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      # - id: release
+      #   name: Create bump and changelog
+      #   uses: python-semantic-release/python-semantic-release@v9.18.1
+      #   if: inputs.dry-run == 'false'
+      #   with:
+      #     root_options: "-vv"
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+
+
       - name: Release dry-run
         uses: python-semantic-release/python-semantic-release@v9.18.1
-        if: inputs.dry-run
         with:
-          root_options: "-vv --noop"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - id: release
-        name: Create bump and changelog
-        uses: python-semantic-release/python-semantic-release@v9.18.1
-        with:
-          root_options: "-vv"
+          root_options: "-vv ${{ inputs.dry_run == 'true' && '--noop' || '' }}"
           github_token: ${{ secrets.GITHUB_TOKEN }}
