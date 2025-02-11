@@ -121,7 +121,6 @@ version_source = "tag"
 commit_version_number = true
 commit_message = "chore(release): bump version to {version}"
 tag_format = "{version}"
-branch = "main"
 # build_command = "pdm build"
 
 [tool.semantic_release.branches.main]
