@@ -31,11 +31,15 @@ jobs:
         with:
           root_options: "-vv --noop"
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          git_committer_name: "github-actions"
+          git_committer_email: "actions@users.noreply.github.com"
 
-      - id: release
+      - id: Release
         name: Create bump and changelog
         uses: python-semantic-release/python-semantic-release@v9.18.1
-        if: inputs.dry-run == 'false'
+        if: inputs.dry-run == false
         with:
           root_options: "-vv"
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          git_committer_name: "github-actions"
+          git_committer_email: "actions@users.noreply.github.com"
