@@ -120,18 +120,19 @@ version_source = "tag"
 commit_version_number = true
 commit_message = "chore(release): bump version to {version}"
 tag_format = "{version}"
-exclude_commit_patterns = ["chore(release): bump version to *", "skip!"]
-# build_command = "pdm build"
+mode = "init"
+
+[tool.semantic_release.commit_parser_options]
+default_level_bump = "patch"
+minor_tags = ['feat']
+patch_tags = ['fix', 'perf', 'build']
+other_allowed_tags = ['chore', 'ci', 'docs', 'style', 'refactor', 'test']
+
+[tool.semantic_release.publish]
+dist_glob_patterns = ["dist/*"]
+upload_to_vcs_release = true
 
 [tool.semantic_release.branches.main]
 match = "(main|master)"
 prerelease_token = "rc"
 prerelease = false
-
-[tool.semantic_release.publish]
-dist_glob_patterns = ["dist/*"]
-
-[tool.semantic_release.commit_parser_options]
-minor_tags = ['feat']
-patch_tags = ['fix', 'perf']
-other_allowed_tags = ['build', 'chore', 'ci', 'docs', 'style', 'refactor', 'test']
