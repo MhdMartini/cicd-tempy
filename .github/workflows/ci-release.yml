@@ -5,7 +5,7 @@ on:
   workflow_call:
     inputs:
       dry-run:
-        description: "Dry tun only."
+        description: "Dry run only."
         required: false
         type: boolean
         default: false
