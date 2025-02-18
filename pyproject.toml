@@ -120,6 +120,7 @@ version_source = "tag"
 commit_version_number = true
 commit_message = "chore(release): bump version to {version}"
 tag_format = "{version}"
+exclude_commit_patterns = ["chore(release): bump version to *", "skip!"]
 # build_command = "pdm build"
 
 [tool.semantic_release.branches.main]
