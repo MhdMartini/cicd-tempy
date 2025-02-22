@@ -3,6 +3,8 @@ description: Builds project documentation with mkdocs.
 
 on:
   workflow_call:
+  release:
+    types: [created]
 
 jobs:
   build-docs:
@@ -10,11 +12,23 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    # - uses: pdm-project/setup-pdm@v4.2
-    #   with:
-    #     python-version: '3.11'
+    - uses: pdm-project/setup-pdm@v4.2
+      with:
+        python-version: '3.11'
 
-    # - name: Install dependencies
-    #   run: pdm sync -dG docs --skip=:all
+    - name: Install dependencies
+      run: pdm sync -dG docs --skip=:all
 
     # - run: pdm run mkdocs build
+
+    - name: Extract Major.Minor Version
+      run: |
+        echo "DOCS_VERSION=$(echo ${{ github.event.release.tag_name }} | cut -d. -f1-2)" >> $GITHUB_ENV
+        echo "Docs Version: $DOCS_VERSION"
+
+    - name: publish website
+      if: github.event_name == 'release'
+      run: |
+        git config user.name ci-bot
+        git config user.email ci-bot@example.com
+        # mike deploy DOCS_VERSION latest
