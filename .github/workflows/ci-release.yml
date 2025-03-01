@@ -22,24 +22,12 @@ jobs:
           fetch-depth: 0
           token: "${{ secrets.GITHUB_TOKEN }}"
       - name: Setup | Force correct release branch on workflow sha
-        run: |
-          git checkout -B ${{ github.ref_name }} ${{ github.sha }}
-
-      - name: Release dry-run
-        uses: python-semantic-release/python-semantic-release@v9.18.1
-        if: inputs.dry-run
-        with:
-          root_options: "-vv --noop"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          git_committer_name: "github-actions"
-          git_committer_email: "actions@users.noreply.github.com"
-
+        run: git checkout -B ${{ github.ref_name }} ${{ github.sha }}
       - id: Release
-        name: Create bump and changelog
+        name: Create bump and changelog (or dry-run)
         uses: python-semantic-release/python-semantic-release@v9.18.1
-        if: inputs.dry-run == false
         with:
-          root_options: "-vv"
+          root_options: "-vv ${{ inputs.dry-run && '--noop' || '' }}"
           github_token: ${{ secrets.GITHUB_TOKEN }}
           git_committer_name: "github-actions"
           git_committer_email: "actions@users.noreply.github.com"
