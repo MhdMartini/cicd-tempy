@@ -1,12 +1,28 @@
 # CHANGELOG
 
 
+## v0.2.2 (2025-03-01)
+
+### Bug Fixes
+
+- Remove faulty action; combine release and release dry run steps
+  ([`a2a6fd6`](https://github.com/MhdMartini/tempy/commit/a2a6fd69a361904380ba627e1c6b1e9724c29dbc))
+
+- **ci**: Update version_file_path in check-version step
+  ([`dab776a`](https://github.com/MhdMartini/tempy/commit/dab776a139ba28ff907447da0dd2b968aba0202e))
+
+
 ## v0.2.1 (2025-02-22)
 
 ### Build System
 
 - **ci**: Trigger release jobs
   ([`fd51241`](https://github.com/MhdMartini/tempy/commit/fd512415c7a8324681590bf5dd0c05a0f2771434))
+
+### Continuous Integration
+
+- Update badges
+  ([`effda4e`](https://github.com/MhdMartini/tempy/commit/effda4e69afb1ed27cb887b01900cc1a539a49fa))
 
 
 ## v0.2.0 (2025-02-18)
