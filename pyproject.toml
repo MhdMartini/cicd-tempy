@@ -23,7 +23,7 @@ docs = [
 ]
 lint = [
     "ruff",
-    "pyright",
+    "mypy>=1.15.0",
 ]
 dev = [
     "pre-commit",
@@ -70,12 +70,6 @@ pydocstyle = { convention = 'google' }
 
 [tool.ruff.format]
 quote-style = 'single'
-
-[tool.pyright]
-include = ['src', 'tests']
-exclude = []
-strict = []
-enableExperimentalFeatures = true
 
 [tool.codespell]
 skip = '.git,env*,pdm.lock'
