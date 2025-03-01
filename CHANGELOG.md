@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.2.1 (2025-02-22)
+
+### Build System
+
+- **ci**: Trigger release jobs
+  ([`fd51241`](https://github.com/MhdMartini/tempy/commit/fd512415c7a8324681590bf5dd0c05a0f2771434))
+
+
 ## v0.2.0 (2025-02-18)
 
 ### Features
