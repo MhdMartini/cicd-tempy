@@ -21,14 +21,15 @@ jobs:
 
     # - run: pdm run mkdocs build
 
-    - name: Extract Major.Minor Version
-      run: |
-        echo "DOCS_VERSION=$(echo ${{ github.event.release.tag_name }} | cut -d. -f1-2)" >> $GITHUB_ENV
-        echo "Docs Version: $DOCS_VERSION"
+    - id: check-version
+      uses: samuelcolvin/check-python-version@v4.1
+      with:
+        version_file_path: 'pydantic/version.py'
+        skip_env_check: true
 
     - name: publish website
       if: github.event_name == 'release'
       run: |
         git config user.name ci-bot
         git config user.email ci-bot@example.com
-        # mike deploy DOCS_VERSION latest
+        # mike deploy ${{ steps.check-version.outputs.VERSION_MAJOR_MINOR }} latest --update-aliases --push

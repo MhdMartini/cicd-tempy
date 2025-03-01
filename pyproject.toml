@@ -75,10 +75,11 @@ quote-style = 'single'
 include = ['src', 'tests']
 exclude = []
 strict = []
-# enableExperimentalFeatures = true
+enableExperimentalFeatures = true
 
 [tool.codespell]
 skip = '.git,env*,pdm.lock'
+ignore-words-list = 'word1,word2'
 
 [tool.pdm]
 distribution = true
