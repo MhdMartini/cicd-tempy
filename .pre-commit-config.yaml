@@ -19,10 +19,17 @@ repos:
     - tomli
     exclude: '^uv\.lock$'
 
-- repo: https://github.com/astral-sh/ruff-pre-commit
-  # Lint and format.
-  rev: v0.9.5
+# - repo: https://github.com/astral-sh/ruff-pre-commit
+#   # Lint and format.
+#   rev: v0.9.5
+#   hooks:
+#   - id: ruff
+#     args: [ --fix ]
+#   - id: ruff-format
+
+- repo: https://github.com/astral-sh/uv-pre-commit
+  # uv version.
+  rev: 0.6.3
   hooks:
-  - id: ruff
-    args: [ --fix ]
-  - id: ruff-format
+  - id: uv-lock
+  # - id: uv-export

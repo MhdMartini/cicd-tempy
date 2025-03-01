@@ -26,5 +26,5 @@ jobs:
       - uses: pre-commit/action@v3.0.1
         with:
           extra_args: --all-files --verbose
-        # env:
-        #   SKIP: no-commit-to-branch
+        env:
+          SKIP: no-commit-to-branch, uv-lock, uv-export

@@ -3,8 +3,12 @@ description: Builds project documentation with mkdocs.
 
 on:
   workflow_call:
-  release:
-    types: [created]
+    inputs:
+      dry-run:
+        description: "Dry run only."
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   build-docs:

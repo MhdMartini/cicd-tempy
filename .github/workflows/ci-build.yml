@@ -3,8 +3,12 @@ description: Builds project wheels and sdist.
 
 on:
   workflow_call:
-  release:
-    types: [created]
+    inputs:
+      dry-run:
+        description: "Dry run only."
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   buid-sdist:
@@ -22,7 +26,7 @@ jobs:
           name: artifacts
           path: dist/*
       - name: publish to PyPI on release
-        if: github.event_name == 'release'
+        if: inputs.dry-run == false
         run: |
           pdm self add keyring
-          # pdm publish
+          pdm publish
