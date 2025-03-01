@@ -30,8 +30,6 @@ jobs:
     - name: Install dependencies
       run: pdm sync -dG test --skip=:all
 
-    - run: 'pdm run python -c "import tempy; print(tempy.__version__)"'
-
     - run: mkdir coverage
 
     - name: Test with all extra dependencies
@@ -100,10 +98,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
       - name: Download coverage data
         uses: actions/download-artifact@v4
         with:
           name: coverage-data
+
 
       - name: Generate coverage comment
         id: coverage-comment
