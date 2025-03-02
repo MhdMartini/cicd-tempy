@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.2.4 (2025-03-02)
+
+### Bug Fixes
+
+- Test on tag push trigger
+  ([`ccac700`](https://github.com/MhdMartini/cicd-tempy/commit/ccac7004b120af1df2407bdda6daaac955a020bc))
+
+
 ## v0.2.3 (2025-03-02)
 
 ### Bug Fixes
@@ -19,6 +27,11 @@
 
 - Wheel publish
   ([`64dd747`](https://github.com/MhdMartini/cicd-tempy/commit/64dd74775335e421d5eb93a1ecb919dbc60c60b7))
+
+### Continuous Integration
+
+- Check tag trigger
+  ([`5b02f7e`](https://github.com/MhdMartini/cicd-tempy/commit/5b02f7ecfe346c0c6754fc43851c39b776f0c769))
 
 
 ## v0.2.2 (2025-03-01)
