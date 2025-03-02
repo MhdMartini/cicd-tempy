@@ -1,4 +1,4 @@
-name: ci-lint
+name: lint
 description: Lint and format.
 
 on:
@@ -14,17 +14,14 @@ jobs:
         python-version: ['3.11', '3.12']
     steps:
       - uses: actions/checkout@v4
-
-      - uses: pdm-project/setup-pdm@v4.2
+      - uses: astral-sh/setup-uv@v5
         with:
           python-version: ${{ matrix.python-version }}
-
-      - name: Install dependencies
-        run: |
-          pdm sync -dG lint --no-self --skip=:all
-
+      - run: |
+          uv sync --group lint
+          uv pip install pip
       - uses: pre-commit/action@v3.0.1
         with:
           extra_args: --all-files --verbose
-        # env:
-        #   SKIP: no-commit-to-branch
+        env:
+          SKIP: no-commit-to-branch, uv-lock, uv-export

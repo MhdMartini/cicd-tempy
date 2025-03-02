@@ -16,37 +16,40 @@ env:
 
 jobs:
   lint:
-    uses: ./.github/workflows/ci-lint.yml
-    secrets: inherit
-
-  build-wheels:
-    uses: ./.github/workflows/ci-build.yml
-    secrets: inherit
-
-  build-docs:
-    uses: ./.github/workflows/ci-docs.yml
+    uses: ./.github/workflows/lint.yml
     secrets: inherit
 
   test:
-    uses: ./.github/workflows/ci-test.yml
+    uses: ./.github/workflows/test.yml
+    secrets: inherit
+
+  build-wheels:
+    uses: ./.github/workflows/build.yml
+    secrets: inherit
+
+  build-docs:
+    uses: ./.github/workflows/docs.yml
     secrets: inherit
 
   release-dry-run:
-    uses: ./.github/workflows/ci-release.yml
+    uses: ./.github/workflows/release.yml
     secrets: inherit
     with:
       dry-run: true
 
   check:  # This job does nothing and is only used for the branch protection
-    if: always()
-    outputs:
-      result: ${{ steps.all-green.outputs.result }}
     needs:
       - lint
+      - test
       - build-wheels
       - build-docs
-      - test
       - release-dry-run
+    outputs:
+      result: ${{ steps.all-green.outputs.result }}
+      is_prerelease: ${{ needs.release-dry-run.outputs.is_prerelease }}
+      version: ${{ needs.release-dry-run.outputs.version }}
+      released: ${{ needs.release-dry-run.outputs.released }}
+      tag: ${{ needs.release-dry-run.outputs.tag }}
     runs-on: ubuntu-latest
     steps:
       - name: Decide whether the needed jobs succeeded or failed
@@ -56,7 +59,17 @@ jobs:
           jobs: ${{ toJSON(needs) }}
 
   release:
-    needs: [check]
+    needs: check
     if: needs.check.outputs.result == 'success' && github.ref_name == 'main'
-    uses: ./.github/workflows/ci-release.yml
+    uses: ./.github/workflows/release.yml
     secrets: inherit
+
+  # publish-wheels:
+  #   needs: release
+  #   uses: ./.github/workflows/build.yml
+  #   secrets: inherit
+
+  # publish-docs:
+  #   needs: release
+  #   uses: ./.github/workflows/docs.yml
+  #   secrets: inherit

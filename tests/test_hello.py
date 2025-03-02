@@ -1,4 +1,4 @@
-from tempy.main import say_hello
+from cicd_tempy.main import say_hello
 
 
 def test_hello():

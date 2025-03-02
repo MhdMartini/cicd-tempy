@@ -1,9 +1,9 @@
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  # A few useful pre-commit hooks
   rev: v5.0.0
   hooks:
   # - id: no-commit-to-branch
+  - id: check-merge-conflict
   - id: check-yaml
     args: [ '--unsafe' ]
   - id: check-toml
@@ -11,7 +11,6 @@ repos:
   - id: trailing-whitespace
 
 - repo: https://github.com/codespell-project/codespell
-  # Cope spell check.
   rev: v2.3.0
   hooks:
   - id: codespell
@@ -19,8 +18,14 @@ repos:
     - tomli
     exclude: '^uv\.lock$'
 
+- repo: https://github.com/astral-sh/uv-pre-commit
+  rev: 0.6.3
+  hooks:
+  - id: uv-lock
+  - id: uv-export
+    args: [ "--output-file=requirements.txt" ]
+
 - repo: https://github.com/astral-sh/ruff-pre-commit
-  # Lint and format.
   rev: v0.9.5
   hooks:
   - id: ruff
