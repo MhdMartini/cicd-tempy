@@ -1,12 +1,12 @@
 [project]
-name = "pytemplate"
+name = "cicd-tempy"
 version = "0.2.1"
 description = "Templates for Python projects"
 authors = [{ name = "mo", email = "mohamedmartini1991@gmail.com" }]
 dependencies = []
 requires-python = ">=3.11"
 readme = "README.md"
-license = { text = "MIT" }
+license = { file = "LICENSE" }
 
 [dependency-groups]
 lint = ["ruff", "mypy"]
@@ -50,7 +50,7 @@ managed = true
 
 # default-groups = ["dev", "test", "docs"]
 
-# # Resolve for most popular environments
+# Resolve for most popular environments
 environments = [
     "sys_platform == 'win32'",
     "sys_platform == 'linux'",
@@ -73,11 +73,21 @@ required-environments = [
 # pytest = { url = "https://files.pythonhosted.org/packages/6b/77/7440a06a8ead44c7757a64362dd22df5760f9b12dc5f11b6188cd2fc27a0/pytest-8.3.3-py3-none-any.whl" }
 # pydantic = { path = "/path/to/pydantic", editable = true }
 
-keyring-provider = "subprocess"
+# keyring-provider = "subprocess"
 publish-url = "https://upload.pypi.org/legacy/"
 # resolution = "lowest-direct"
 package = true
 
+# [[tool.uv.index]]
+# name = "pypi"
+# url = "https://pypi.org/simple/"
+# publish-url = "https://upload.pypi.org/legacy/"
+# default = true
+
+# [[tool.uv.index]]
+# name = "testpypi"
+# url = "https://test.pypi.org/simple/"
+# publish-url = "https://test.pypi.org/legacy/"
 
 [tool.ruff]
 line-length = 115
@@ -102,7 +112,7 @@ select = [
 ]
 ignore = ['D105', 'D107', 'D205', 'D415', 'E501', 'B011', 'B028', 'B904']
 flake8-quotes = { inline-quotes = 'single', multiline-quotes = 'double' }
-isort = { known-first-party = ['pytemplate', 'tests'] }
+isort = { known-first-party = ['cicd-tempy', 'tests'] }
 mccabe = { max-complexity = 14 }
 pydocstyle = { convention = 'google' }
 
@@ -144,13 +154,13 @@ exclude_lines = [
 
 [tool.coverage.paths]
 source = [
-    'src/pytemplate/',
-    '/Users/runner/work/pytemplate/src/pytemplate/',
-    'D:\a\pytemplate\src\pytemplate',
+    'src/cicd-tempy/',
+    '/Users/runner/work/cicd-tempy/src/cicd-tempy/',
+    'D:\a\cicd-tempy\src\cicd-tempy',
 ]
 
 [tool.semantic_release]
-version_variables = ["src/pytemplate/__init__.py:__version__"]
+version_variables = ["src/cicd-tempy/__init__.py:__version__"]
 version_toml = ["pyproject.toml:project.version"]
 version_source = "tag"
 commit_version_number = true
@@ -174,5 +184,9 @@ prerelease_token = "rc"
 prerelease = false
 
 [build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+# [build-system]
+# requires = ["setuptools", "wheel"]
+# build-backend = "setuptools.build_meta"
