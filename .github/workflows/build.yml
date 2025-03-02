@@ -21,5 +21,5 @@ jobs:
           name: artifacts
           path: dist/*
       - name: publish to PyPI
-        if: github.event_name == 'push'
+        if: startsWith(github.ref, 'refs/tags/')
         run: uv publish --username __token__ --password ${{ secrets.PYPI }}
