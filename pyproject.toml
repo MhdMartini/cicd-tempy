@@ -149,7 +149,7 @@ source = [
 ]
 
 [tool.semantic_release]
-version_variables = ["src/cicd-tempy/__init__.py:__version__"]
+version_variables = ["src/cicd_tempy/__init__.py:__version__"]
 version_toml = ["pyproject.toml:project.version"]
 version_source = "tag"
 commit_version_number = true
