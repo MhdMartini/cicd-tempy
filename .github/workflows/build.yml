@@ -15,18 +15,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pdm-project/setup-pdm@v4.2
+      - uses: astral-sh/setup-uv@v5
         with:
           python-version: '3.11'
-      - name: build wheels
-        run: pdm build --skip=:all
-      - name: Upload built wheels and src code as artifacts
-        uses: actions/upload-artifact@v4.6.0
+      - run: uv build
+      - uses: actions/upload-artifact@v4.6.0
         with:
           name: artifacts
           path: dist/*
-      - name: publish to PyPI on release
+      - name: publish to TestPyPI
+        if: inputs.dry-run == true
+        run: uv publish --index testpypi --username __token__ --password ${{ secrets.TEST_PYPI }}
+      - name: publish to PyPI
         if: inputs.dry-run == false
-        run: |
-          pdm self add keyring
-          pdm publish
+        run: uv publish --index pypi --username __token__ --password ${{ secrets.PYPI }}

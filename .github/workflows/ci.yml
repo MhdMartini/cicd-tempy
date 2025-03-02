@@ -16,23 +16,23 @@ env:
 
 jobs:
   lint:
-    uses: ./.github/workflows/ci-lint.yml
+    uses: ./.github/workflows/lint.yml
     secrets: inherit
 
   build-wheels:
-    uses: ./.github/workflows/ci-build.yml
+    uses: ./.github/workflows/build.yml
     secrets: inherit
     with:
       dry-run: true
 
   build-docs:
-    uses: ./.github/workflows/ci-docs.yml
+    uses: ./.github/workflows/docs.yml
     secrets: inherit
     with:
       dry-run: true
 
   test:
-    uses: ./.github/workflows/ci-test.yml
+    uses: ./.github/workflows/test.yml
     secrets: inherit
 
   release-dry-run:
