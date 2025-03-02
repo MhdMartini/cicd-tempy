@@ -39,24 +39,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - uses: actions/download-artifact@v4
+      - name: Get coverage files
+        uses: actions/download-artifact@v4
         with:
           merge-multiple: true
           pattern: coverage-*
           path: coverage
+      - run: pip install coverage[toml]
       - run: ls -la coverage
-      - run: uvx run coverage combine coverage
-      - run: uvx run coverage report
-      - run: uvx run coverage html --show-contexts --title "tempy coverage for ${{ github.sha }}"
-      - uses: actions/upload-artifact@v4
+      - run: coverage combine coverage
+      - run: coverage report
+      - run: coverage html --show-contexts --title "pydantic coverage for ${{ github.sha }}"
+      - name: Store coverage data
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-data
           path: .coverage
           include-hidden-files: true
-      - uses: actions/upload-artifact@v4
+      - name: Store coverage HTML
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-html
           path: htmlcov
