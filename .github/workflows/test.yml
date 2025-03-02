@@ -1,4 +1,4 @@
-name: ci-test
+name: test
 description: Run unit tests.
 
 on:

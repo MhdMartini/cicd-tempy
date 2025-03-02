@@ -1,14 +1,11 @@
-name: ci-build
+name: build
 description: Builds project wheels and sdist.
 
 on:
+  push:
+    tags:
+      - '**'
   workflow_call:
-    inputs:
-      dry-run:
-        description: "Dry run only."
-        required: false
-        type: boolean
-        default: false
 
 jobs:
   buid-sdist:
@@ -23,9 +20,6 @@ jobs:
         with:
           name: artifacts
           path: dist/*
-      - name: publish to TestPyPI
-        if: inputs.dry-run == true
-        run: uv publish --index testpypi --username __token__ --password ${{ secrets.TEST_PYPI }}
       - name: publish to PyPI
-        if: inputs.dry-run == false
-        run: uv publish --index pypi --username __token__ --password ${{ secrets.PYPI }}
+        if: github.event_name == 'push'
+        run: uv publish --username __token__ --password ${{ secrets.PYPI }}
