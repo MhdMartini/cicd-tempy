@@ -108,7 +108,7 @@ wheels = [
 
 [[package]]
 name = "cicd-tempy"
-version = "0.3.0"
+version = "0.2.3"
 source = { editable = "." }
 
 [package.dev-dependencies]
