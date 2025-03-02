@@ -35,7 +35,7 @@ jobs:
     uses: ./.github/workflows/release.yml
     secrets: inherit
     with:
-      dry_run: true
+      dry-run: true
 
   check:  # This job does nothing and is only used for the branch protection
     needs:
