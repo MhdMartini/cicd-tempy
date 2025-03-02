@@ -35,7 +35,7 @@ jobs:
     uses: ./.github/workflows/release.yml
     secrets: inherit
     with:
-      dry-run: true
+      dry_run: true
 
   check:  # This job does nothing and is only used for the branch protection
     needs:
@@ -46,10 +46,6 @@ jobs:
       - release-dry-run
     outputs:
       result: ${{ steps.all-green.outputs.result }}
-      is_prerelease: ${{ needs.release-dry-run.outputs.is_prerelease }}
-      version: ${{ needs.release-dry-run.outputs.version }}
-      released: ${{ needs.release-dry-run.outputs.released }}
-      tag: ${{ needs.release-dry-run.outputs.tag }}
     runs-on: ubuntu-latest
     steps:
       - name: Decide whether the needed jobs succeeded or failed
