@@ -3,16 +3,10 @@ name: ci
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+  pull_request: {}
 
 permissions:
   contents: write
-  pull-requests: write
-  pages: write
-
-env:
-  COLUMNS: 120
 
 jobs:
   lint:
@@ -26,10 +20,14 @@ jobs:
   build-wheels:
     uses: ./.github/workflows/build.yml
     secrets: inherit
+    with:
+      dry-run: true
 
   build-docs:
     uses: ./.github/workflows/docs.yml
     secrets: inherit
+    with:
+      dry-run: true
 
   release-dry-run:
     uses: ./.github/workflows/release.yml
@@ -60,12 +58,16 @@ jobs:
     uses: ./.github/workflows/release.yml
     secrets: inherit
 
-  # publish-wheels:
-  #   needs: release
-  #   uses: ./.github/workflows/build.yml
-  #   secrets: inherit
+  docs:
+    needs: release
+    uses: ./.github/workflows/docs.yml
+    secrets: inherit
+    with:
+      sha: ${{ needs.release.outputs.sha }}
 
-  # publish-docs:
-  #   needs: release
-  #   uses: ./.github/workflows/docs.yml
-  #   secrets: inherit
+  wheels:
+    needs: release
+    uses: ./.github/workflows/build.yml
+    secrets: inherit
+    with:
+      sha: ${{ needs.release.outputs.sha }}

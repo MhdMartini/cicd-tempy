@@ -24,4 +24,4 @@ jobs:
         with:
           extra_args: --all-files --verbose
         env:
-          SKIP: no-commit-to-branch, uv-lock, uv-export
+          SKIP: no-commit-to-branch, uv-lock

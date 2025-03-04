@@ -2,16 +2,26 @@ name: build
 description: Builds project wheels and sdist.
 
 on:
-  push:
-    tags:
-      - '**'
   workflow_call:
+    inputs:
+      dry-run:
+        description: 'Do not publish to PyPI.'
+        required: false
+        default: false
+        type: boolean
+      sha:
+        description: 'The commit SHA to build the wheels for.'
+        required: false
+        default: ${{ github.sha }}
+        type: string
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.sha }}
       - uses: astral-sh/setup-uv@v5
         with:
           python-version: '3.11'
@@ -21,5 +31,5 @@ jobs:
           name: artifacts
           path: dist/*
       - name: publish to PyPI
-        if: startsWith(github.ref, 'refs/tags/')
+        if: inputs.dry-run == false
         run: uv publish --username __token__ --password ${{ secrets.PYPI }}

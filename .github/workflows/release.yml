@@ -9,10 +9,16 @@ on:
         required: false
         default: false
         type: boolean
+    outputs:
+      sha:
+        description: "The latest commit SHA after release"
+        value: ${{ jobs.release.outputs.sha }}
 
 jobs:
   release:
     runs-on: ubuntu-latest
+    outputs:
+      sha: ${{ steps.get-sha.outputs.sha }}
     steps:
       - name: Check out
         uses: actions/checkout@v3
@@ -36,3 +42,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           git_committer_name: "github-actions"
           git_committer_email: "actions@users.noreply.github.com"
+      - id: get-sha
+        run: echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
