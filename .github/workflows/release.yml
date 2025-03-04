@@ -2,9 +2,6 @@ name: release
 description: Create a new semantic release.
 
 on:
-  push:
-    tags:
-      - '**'
   workflow_call:
     inputs:
       dry-run:
@@ -23,27 +20,23 @@ jobs:
     outputs:
       sha: ${{ steps.get-sha.outputs.sha }}
     steps:
-      - name: Check out
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
           token: "${{ secrets.GITHUB_TOKEN }}"
-      - name: Setup | Force correct release branch on workflow sha
-        run: git checkout -B ${{ github.ref_name }} ${{ github.sha }}
-      - name: Determine release options
-        run: |
-          if [[ "${{ inputs.dry-run }}" == true ]]; then
-            echo "ROOT_OPTIONS=-vv --noop" >> $GITHUB_ENV
-          else
-            echo "ROOT_OPTIONS=-vv" >> $GITHUB_ENV
-          fi
-      - id: release
-        name: Create bump and changelog (or dry-run)
-        uses: python-semantic-release/python-semantic-release@v9.18.1
+      - id: cz
+        uses: commitizen-tools/commitizen-action@master
         with:
-          root_options: "${{ env.ROOT_OPTIONS }}"
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          git_committer_name: "github-actions"
-          git_committer_email: "actions@users.noreply.github.com"
+          check_consistency: true
+          dry_run: ${{ inputs.dry-run }}
+          debug: ${{ inputs.dry-run }}
+      - if: inputs.dry-run == false
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.cz.outputs.version }}
+          draft: ${{ inputs.dry-run }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - id: get-sha
         run: echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
