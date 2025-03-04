@@ -10,7 +10,7 @@ license = { file = "LICENSE" }
 
 [dependency-groups]
 lint = ["ruff", "mypy"]
-dev = ["pre-commit"]
+dev = ["commitizen>=4.4.1", "pre-commit"]
 test = ["pytest", "pytest-pretty", "pytest-mock", "coverage[toml]"]
 docs = [
     "mkdocs>=1.6.1",
@@ -157,19 +157,17 @@ commit_message = "chore(release): bump version to {version}"
 tag_format = "{version}"
 mode = "init"
 
-[tool.semantic_release.commit_parser_options]
-minor_tags = ['feat']
-patch_tags = ['fix', 'perf', 'build']
-other_allowed_tags = ['chore', 'ci', 'docs', 'style', 'refactor', 'test']
-
-[tool.semantic_release.publish]
-dist_glob_patterns = ["dist/*"]
-upload_to_vcs_release = true
-
-[tool.semantic_release.branches.main]
-match = "(main|master)"
-prerelease_token = "rc"
-prerelease = false
+[tool.commitizen]
+name = "cz_conventional_commits"
+update_changelog_on_bump = true
+version_provider = "uv"
+allowed_prefixes = [
+    "Merge",
+    "Revert",
+    "Pull request",
+    "fixup!",
+    "squash!",
+] # default
 
 [build-system]
 requires = ["hatchling"]
