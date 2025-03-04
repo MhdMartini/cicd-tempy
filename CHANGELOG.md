@@ -1,9 +1,23 @@
 # CHANGELOG
 
 
+## v0.2.5 (2025-03-04)
+
+### Bug Fixes
+
+- Manually invoke docs and wheels publishing
+  ([`21a5465`](https://github.com/MhdMartini/cicd-tempy/commit/21a546554528ecd62f1a16c8e4bb366558c60b45))
+
+- Pr writes to ci
+  ([`ff9eb80`](https://github.com/MhdMartini/cicd-tempy/commit/ff9eb8098002012b182fc1a0cde96eb1287f43b7))
+
+
 ## v0.2.4 (2025-03-02)
 
 ### Bug Fixes
+
+- Manually invoke docs and wheels publishing
+  ([`b080a59`](https://github.com/MhdMartini/cicd-tempy/commit/b080a59908281da992ae3ab60023447ababc8820))
 
 - Test on tag push trigger
   ([`ccac700`](https://github.com/MhdMartini/cicd-tempy/commit/ccac7004b120af1df2407bdda6daaac955a020bc))
