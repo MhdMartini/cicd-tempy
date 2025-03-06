@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## 0.2.6 (2025-03-06)
+
+### Fix
+
+- **ci**: docs publish
+- move to commitizen
+
 ## v0.2.5 (2025-03-04)
 
 ### Bug Fixes
