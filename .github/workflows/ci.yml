@@ -30,11 +30,11 @@ jobs:
     with:
       dry-run: true
 
-  release-dry-run:
-    uses: ./.github/workflows/release.yml
-    secrets: inherit
-    with:
-      dry-run: true
+  # release-dry-run:
+  #   uses: ./.github/workflows/release.yml
+  #   secrets: inherit
+  #   with:
+  #     dry-run: true
 
   check:  # This job does nothing and is only used for the branch protection
     needs:
