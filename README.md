@@ -28,3 +28,4 @@ Features out of the box:
     - Versioned documentation website building and publishing with `mkdocs-material` and `mike`.
     - Package building and publishing to `PyPi`
     - Automatic semantic releases and changelog updates
+3. Pull Request template.
