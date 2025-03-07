@@ -30,19 +30,12 @@ jobs:
     with:
       dry-run: true
 
-  # release-dry-run:
-  #   uses: ./.github/workflows/release.yml
-  #   secrets: inherit
-  #   with:
-  #     dry-run: true
-
   check:  # This job does nothing and is only used for the branch protection
     needs:
       - lint
       - test
       - build-wheels
       - build-docs
-      # - release-dry-run
     outputs:
       result: ${{ steps.all-green.outputs.result }}
     runs-on: ubuntu-latest
@@ -61,6 +54,7 @@ jobs:
 
   docs:
     needs: release
+    if: needs.release.outputs.released == true
     uses: ./.github/workflows/docs.yml
     secrets: inherit
     with:
@@ -68,6 +62,7 @@ jobs:
 
   wheels:
     needs: release
+    if: needs.release.outputs.released == true
     uses: ./.github/workflows/build.yml
     secrets: inherit
     with:
