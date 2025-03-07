@@ -31,7 +31,7 @@ jobs:
           check_consistency: true
           dry_run: ${{ inputs.dry-run }}
           debug: ${{ inputs.dry-run }}
-          no_raise: "21"  # The commits found are not eligible to be bumped
+          no_raise: '21'  # The commits found are not eligible to be bumped
       - if: inputs.dry-run == false
         uses: softprops/action-gh-release@v1
         with:
