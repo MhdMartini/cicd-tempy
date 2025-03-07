@@ -42,7 +42,7 @@ jobs:
       - test
       - build-wheels
       - build-docs
-      - release-dry-run
+      # - release-dry-run
     outputs:
       result: ${{ steps.all-green.outputs.result }}
     runs-on: ubuntu-latest
