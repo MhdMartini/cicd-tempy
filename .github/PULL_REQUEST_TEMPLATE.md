@@ -1,3 +1,4 @@
+<!-- Adapted from Pydantic's pull request template: https://github.com/pydantic/pydantic/blob/main/.github/PULL_REQUEST_TEMPLATE.md -->
 <!-- Thank you for your contribution! -->
 <!-- Unless your change is trivial, please create an issue to discuss the change before creating a PR -->
 

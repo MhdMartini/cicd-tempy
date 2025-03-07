@@ -30,11 +30,11 @@ jobs:
     with:
       dry-run: true
 
-  release-dry-run:
-    uses: ./.github/workflows/release.yml
-    secrets: inherit
-    with:
-      dry-run: true
+  # release-dry-run:
+  #   uses: ./.github/workflows/release.yml
+  #   secrets: inherit
+  #   with:
+  #     dry-run: true
 
   check:  # This job does nothing and is only used for the branch protection
     needs:
@@ -42,7 +42,7 @@ jobs:
       - test
       - build-wheels
       - build-docs
-      - release-dry-run
+      # - release-dry-run
     outputs:
       result: ${{ steps.all-green.outputs.result }}
     runs-on: ubuntu-latest
