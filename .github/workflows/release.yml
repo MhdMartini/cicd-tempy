@@ -16,14 +16,20 @@ jobs:
   release:
     runs-on: ubuntu-latest
     outputs:
-      sha: ${{ steps.get-sha.outputs.sha }}
       version: ${{ steps.release.outputs.version }}
       released: ${{ steps.release.outputs.released }}
+      sha: ${{ steps.get-sha.outputs.sha }}
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
           token: "${{ secrets.GITHUB_TOKEN }}"
+      - id: cz
+        uses: commitizen-tools/commitizen-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          check_consistency: true
+          changelog: false
       - id: release
         name: Create bump and changelog (or dry-run)
         uses: python-semantic-release/python-semantic-release@v9.18.1
@@ -32,5 +38,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           git_committer_name: "github-actions"
           git_committer_email: "actions@users.noreply.github.com"
+          tag: false
       - id: get-sha
         run: echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
