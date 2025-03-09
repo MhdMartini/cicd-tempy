@@ -173,7 +173,7 @@ prerelease = false
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-update_changelog_on_bump = true
+update_changelog_on_bump = false
 version_provider = "uv"
 allowed_prefixes = [
     "Merge",
@@ -182,6 +182,7 @@ allowed_prefixes = [
     "fixup!",
     "squash!",
 ] # default
+tag_format = ""
 
 [build-system]
 requires = ["hatchling"]
