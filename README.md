@@ -7,9 +7,9 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/MhdMartini/pytemplate/blob/main/.pre-commit-config.yaml)
 ![MkDocs Material](https://img.shields.io/badge/MkDocs-Material-lightgrey?logo=materialdesign)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Using uv](https://img.shields.io/badge/using-uv-blue?logo=python)
 [![semantic-release: conventional](https://img.shields.io/badge/semantic--release-conventional-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 Python project template that tries to automate CI/CD best practices.
