@@ -1,6 +1,6 @@
 [project]
 name = "cicd-tempy"
-version = "0.3.0"
+version = "0.4.0"
 description = "Templates for Python projects"
 authors = [{ name = "mo", email = "mohamedmartini1991@gmail.com" }]
 dependencies = []
