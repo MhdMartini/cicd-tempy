@@ -1,6 +1,12 @@
 # CHANGELOG
 
 
+## 0.3.0 (2025-03-09)
+
+### Feat
+
+- use cz for version update and python semantic releases for other (#6)
+
 ## 0.2.6 (2025-03-06)
 
 ### Fix
