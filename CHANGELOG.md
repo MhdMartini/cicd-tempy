@@ -1,24 +1,77 @@
 # CHANGELOG
 
 
-## 0.4.0 (2025-03-09)
+## v0.4.1 (2025-03-13)
 
-### Feat
+### Bug Fixes
 
-- test release (#7)
+- Set cz tag fmt to empty string to forbid cz tags
+  ([#8](https://github.com/MhdMartini/cicd-tempy/pull/8),
+  [`fca3b2b`](https://github.com/MhdMartini/cicd-tempy/commit/fca3b2b65fb35f8d85ecc492391df3a5826e9b99))
 
-## 0.3.0 (2025-03-09)
+Co-authored-by: mhdmartini <mohamedmartini1991@gmail.com>
 
-### Feat
+- Update requirements ([#9](https://github.com/MhdMartini/cicd-tempy/pull/9),
+  [`c9f0976`](https://github.com/MhdMartini/cicd-tempy/commit/c9f0976f5e5f8d6b6bc91e9153c1694f41637271))
 
-- use cz for version update and python semantic releases for other (#6)
+Co-authored-by: mhdmartini <mohamedmartini1991@gmail.com>
 
-## 0.2.6 (2025-03-06)
+- **ci**: Revert to cz releases
+  ([`9bb784b`](https://github.com/MhdMartini/cicd-tempy/commit/9bb784b647dff7f6dd86d1c8404a34076ded7358))
 
-### Fix
 
-- **ci**: docs publish
-- move to commitizen
+## v0.4.0 (2025-03-09)
+
+### Features
+
+- Test release ([#7](https://github.com/MhdMartini/cicd-tempy/pull/7),
+  [`b3178c9`](https://github.com/MhdMartini/cicd-tempy/commit/b3178c953e723baaac0ef2f06a3c444d8ab2c363))
+
+Co-authored-by: mhdmartini <mohamedmartini1991@gmail.com>
+
+
+## v0.3.0 (2025-03-09)
+
+### Continuous Integration
+
+- **release.yml**: Revert releases to python semantic releases
+  ([#5](https://github.com/MhdMartini/cicd-tempy/pull/5),
+  [`676cc3a`](https://github.com/MhdMartini/cicd-tempy/commit/676cc3ad73a2cc69166918baad375bbebabb643d))
+
+Co-authored-by: mhdmartini <mohamedmartini1991@gmail.com>
+
+### Documentation
+
+- Badges and readme update ([#4](https://github.com/MhdMartini/cicd-tempy/pull/4),
+  [`96e028d`](https://github.com/MhdMartini/cicd-tempy/commit/96e028dcc600bd295fff4ff869e3a261b598419f))
+
+* docs: badges and readme update
+
+* ci(release.yml): try no raise to avoid error when no bump
+
+---------
+
+Co-authored-by: mhdmartini <mohamedmartini1991@gmail.com>
+
+### Features
+
+- Use cz for version update and python semantic releases for other
+  ([#6](https://github.com/MhdMartini/cicd-tempy/pull/6),
+  [`2a9c8d6`](https://github.com/MhdMartini/cicd-tempy/commit/2a9c8d602ab2b8524bf204f1ecceff02ba0eddc8))
+
+Co-authored-by: mhdmartini <mohamedmartini1991@gmail.com>
+
+
+## v0.2.6 (2025-03-06)
+
+### Bug Fixes
+
+- Move to commitizen
+  ([`36af2db`](https://github.com/MhdMartini/cicd-tempy/commit/36af2db38cf4a542adf9498ee65717a2142a5ab7))
+
+- **ci**: Docs publish
+  ([`1873f17`](https://github.com/MhdMartini/cicd-tempy/commit/1873f179470fd1d85ca86addec1436e390e0386e))
+
 
 ## v0.2.5 (2025-03-04)
 
