@@ -148,29 +148,6 @@ source = [
     'D:\a\cicd-tempy\src\cicd-tempy',
 ]
 
-[tool.semantic_release]
-version_variables = ["src/cicd_tempy/__init__.py:__version__"]
-version_toml = ["pyproject.toml:project.version"]
-version_source = "tag"
-commit_version_number = true
-commit_message = "chore(release): bump version to {version}"
-tag_format = "{version}"
-mode = "init"
-
-[tool.semantic_release.commit_parser_options]
-minor_tags = ['feat']
-patch_tags = ['fix', 'perf', 'build']
-other_allowed_tags = ['chore', 'ci', 'docs', 'style', 'refactor', 'test']
-
-[tool.semantic_release.publish]
-dist_glob_patterns = ["dist/*"]
-upload_to_vcs_release = true
-
-[tool.semantic_release.branches.main]
-match = "(main|master)"
-prerelease_token = "rc"
-prerelease = false
-
 [tool.commitizen]
 name = "cz_conventional_commits"
 update_changelog_on_bump = false
@@ -182,12 +159,7 @@ allowed_prefixes = [
     "fixup!",
     "squash!",
 ] # default
-tag_format = ""
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
-
-# [build-system]
-# requires = ["setuptools", "wheel"]
-# build-backend = "setuptools.build_meta"

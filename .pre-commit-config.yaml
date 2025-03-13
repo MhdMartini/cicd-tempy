@@ -11,7 +11,7 @@ repos:
   - id: trailing-whitespace
 
 - repo: https://github.com/codespell-project/codespell
-  rev: v2.3.0
+  rev: v2.4.1
   hooks:
   - id: codespell
     additional_dependencies:
@@ -19,20 +19,22 @@ repos:
     exclude: '^uv\.lock$'
 
 - repo: https://github.com/astral-sh/uv-pre-commit
-  rev: 0.6.3
+  rev: 0.6.6
   hooks:
   - id: uv-lock
   - id: uv-export
     args: [ "--output-file=requirements.txt" ]
 
 - repo: https://github.com/commitizen-tools/commitizen
-  rev: v1.17.0
+  rev: v4.4.1
   hooks:
   - id: commitizen
-    stages: [ commit-msg ]
+  - id: commitizen-branch
+    stages:
+    - post-commit
 
 - repo: https://github.com/astral-sh/ruff-pre-commit
-  rev: v0.9.5
+  rev: v0.9.10
   hooks:
   - id: ruff
     args: [ --fix ]
