@@ -48,7 +48,7 @@ managed = true
 # # direct or transitive dependency.
 # constraint-dependencies = ["grpcio<1.65"]
 
-# default-groups = ["dev", "test", "docs"]
+default-groups = ["dev", "test", "docs", "lint"]
 
 # Resolve for most popular environments
 environments = [
