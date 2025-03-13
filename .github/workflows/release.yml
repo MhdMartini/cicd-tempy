@@ -6,8 +6,6 @@ on:
     outputs:
       version:
         value: ${{ jobs.release.outputs.version }}
-      released:
-        value: ${{ jobs.release.outputs.released }}
       sha:
         description: "The latest commit SHA after release"
         value: ${{ jobs.release.outputs.sha }}
@@ -16,21 +14,23 @@ jobs:
   release:
     runs-on: ubuntu-latest
     outputs:
-      version: ${{ steps.release.outputs.version }}
-      released: ${{ steps.release.outputs.released }}
+      version: ${{ steps.cz.outputs.version }}
       sha: ${{ steps.get-sha.outputs.sha }}
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
           token: "${{ secrets.GITHUB_TOKEN }}"
-      - id: release
-        name: Create bump and changelog (or dry-run)
-        uses: python-semantic-release/python-semantic-release@v9.18.1
+      - id: cz
+        uses: commitizen-tools/commitizen-action@master
         with:
-          root_options: "-vv"
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          git_committer_name: "github-actions"
-          git_committer_email: "actions@users.noreply.github.com"
+          check_consistency: true
+      - uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.cz.outputs.version }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: echo ${{ steps.cz.outputs.version }}
       - id: get-sha
         run: echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
