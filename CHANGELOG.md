@@ -1,6 +1,12 @@
 # CHANGELOG
 
 
+## 0.4.2 (2025-03-14)
+
+### Fix
+
+- **ci**: publish docs and wheels with no condition (#11)
+
 ## v0.4.1 (2025-03-13)
 
 ### Bug Fixes
