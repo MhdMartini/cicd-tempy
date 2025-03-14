@@ -53,18 +53,16 @@ jobs:
     uses: ./.github/workflows/release.yml
     secrets: inherit
 
-  # docs:
-  #   needs: release
-  #   if: needs.release.outputs.released == true
-  #   uses: ./.github/workflows/docs.yml
-  #   secrets: inherit
-  #   with:
-  #     sha: ${{ needs.release.outputs.sha }}
+  docs:
+    needs: release
+    uses: ./.github/workflows/docs.yml
+    secrets: inherit
+    with:
+      sha: ${{ needs.release.outputs.sha }}
 
-  # wheels:
-  #   needs: release
-  #   if: needs.release.outputs.released == true
-  #   uses: ./.github/workflows/build.yml
-  #   secrets: inherit
-  #   with:
-  #     sha: ${{ needs.release.outputs.sha }}
+  wheels:
+    needs: release
+    uses: ./.github/workflows/build.yml
+    secrets: inherit
+    with:
+      sha: ${{ needs.release.outputs.sha }}
